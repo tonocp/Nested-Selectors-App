@@ -33,7 +33,10 @@
       <label class="form-label">Fronteras:</label>
       <select class="form-control" formControlName="frontera">
         <option value="">-- Seleccione el País fronterizo --</option>
-        <option *ngFor="let frontera of fronteras" [value]="frontera.alpha3Code">
+        <option
+          *ngFor="let frontera of fronteras"
+          [value]="frontera.alpha3Code"
+        >
           {{ frontera.name }}
         </option>
       </select>
@@ -52,7 +55,3 @@
     </div>
   </div>
 </form>
-
-<h3>Formulario</h3>
-<pre>Valid: {{ miFormulario.valid }}</pre>
-<pre>Value: {{ miFormulario.value | json }}</pre>
