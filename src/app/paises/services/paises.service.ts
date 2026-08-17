@@ -7,7 +7,7 @@ import { combineLatest, Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class PaisesService {
-  private baseUrl: string = 'https://restcountries.com/v2';
+  private baseUrl: string = 'https://www.apicountries.com';
   private _regiones: string[] = [
     'Africa',
     'Americas',
@@ -23,7 +23,7 @@ export class PaisesService {
   constructor(private http: HttpClient) {}
 
   getPaisesPorRegion(region: string): Observable<PaisSmall[]> {
-    const url: string = `${this.baseUrl}/continent/${region}?fields=alpha3Code,name`;
+    const url: string = `${this.baseUrl}/region/${region}?fields=alpha3Code,name`;
     return this.http.get<PaisSmall[]>(url);
   }
 
@@ -34,7 +34,7 @@ export class PaisesService {
   }
 
   getPaisPorCodigoSmall(codigo: string): Observable<PaisSmall> {
-    const url: string = `${this.baseUrl}/alpha/${codigo}?fields?alpha3Code,name`;
+    const url: string = `${this.baseUrl}/alpha/${codigo}?fields=alpha3Code,name`;
     return this.http.get<PaisSmall>(url);
   }
 
