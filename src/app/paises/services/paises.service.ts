@@ -7,7 +7,7 @@ import { combineLatest, Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class PaisesService {
-  private baseUrl: string = 'https://www.apicountries.com';
+  private baseUrl: string = 'https://countries.dev';
   private _regiones: string[] = [
     'Africa',
     'Americas',
