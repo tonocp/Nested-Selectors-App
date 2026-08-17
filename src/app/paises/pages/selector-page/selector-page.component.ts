@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { switchMap, tap } from 'rxjs/operators';
 import { PaisesService } from '../../services/paises.service';
 import { PaisSmall } from '../../interfaces/paises.interface';
 
 @Component({
-  selector: 'app-selector-page',
-  templateUrl: './selector-page.component.html',
-  styles: [],
+    selector: 'app-selector-page',
+    templateUrl: './selector-page.component.html',
+    styles: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class SelectorPageComponent implements OnInit {
-  miFormulario: FormGroup = this.fb.group({
+  miFormulario: UntypedFormGroup = this.fb.group({
     region: ['', Validators.required],
     pais: ['', Validators.required],
     frontera: ['', Validators.required],
@@ -24,7 +26,7 @@ export class SelectorPageComponent implements OnInit {
   // UI
   cargando: boolean = false;
 
-  constructor(private fb: FormBuilder, private paisesService: PaisesService) {}
+  constructor(private fb: UntypedFormBuilder, private paisesService: PaisesService) {}
 
   ngOnInit(): void {
     this.regiones = this.paisesService.regiones;
